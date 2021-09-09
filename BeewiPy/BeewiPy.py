@@ -7,6 +7,8 @@ class BeewiSmartBulb:
     '''
     Class for interfacing with a Beewi SmartBulb
     '''
+    ## NEW BYTE SEQUENCES
+    
     TURN_ON  = bytes([85,16, 1,13,10])
     TURN_OFF = bytes([85,16, 0,13,10])
     SET_BRIGHTNESS =   [bytes([85,18, 2,13,10]),
@@ -29,19 +31,17 @@ class BeewiSmartBulb:
                         bytes([85,17, 9,13,10]),
                         bytes([85,17,10,13,10]),
                         bytes([85,17,11,13,10])]
-    SET_WHITE = bytes([85,20,255,255,255,13,10])
-    SET_COLOR = bytearray([85,19,255,255,255,13,10])
-    SET_COLOR_SEQUENCE = [bytes([85,23, 8,13,10]),
-                          bytes([85,23, 9,13,10]),
-                          bytes([85,23,10,13,10]),
-                          bytes([85,23,11,13,10]),
-                          bytes([85,23,12,13,10])]
+    SET_WHITE = bytes([85,20,128,128,128,13,10])
+    SET_COLOR = bytearray([85,19,255,0,0,13,10])
+
 
     SERVICE_SMARTLITE_CONTROL = "a8b3fff0-4834-4051-89d0-3de95cddd318"
+
 
     CHARACTERISTIC_SMARTLITE_SETTINGS = "a8b3fff1-4834-4051-89d0-3de95cddd318"
     CHARACTERISTIC_SMARTLITE_READ_SETTINGS = "a8b3fff2-4834-4051-89d0-3de95cddd318"
 
+    ## KEEPING OLD SERVICES AND CHARACTERISTICS FOR DEVICE INFO
     SERVICE_SMARTLITE_DEVICE_INFORMATION = "0000180a-0000-1000-8000-00805f9b34fb"
     CHARACTERISTIC_SYSTEM_ID = "00002a23-0000-1000-8000-00805f9b34fb"
     CHARACTERISTIC_MODEL_NUMBER_STRING = "00002a24-0000-1000-8000-00805f9b34fb"
