@@ -33,6 +33,8 @@ class BeewiSmartBulb:
                         bytes([85,17,11,13,10])]
     SET_WHITE = bytes([85,20,128,128,128,13,10])
     SET_COLOR = bytearray([85,19,255,0,0,13,10])
+    SET_SHORT_WAVE = bytes([85,23,9,13,10])
+    SET_LONG_WAVE = bytes([85,23,12,13,10])
 
 
     SERVICE_SMARTLITE_CONTROL = "a8b3fff0-4834-4051-89d0-3de95cddd318"
