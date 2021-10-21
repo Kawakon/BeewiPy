@@ -217,24 +217,23 @@ class BeewiSmartBulb:
 
             self.__writeSettings(self.SET_COLOR)
 
-    def setColorSequence(self, sequence):
+    def setColorSequence(self, interval):
         '''
-        Set the bulb in color sequence mode.
-
-        This method configures the bulb to be in color sequence mode. There are
-        5 predefined color sequences.
-
+        Set the interval between colour change to be long or short.
         Parameters
         ----------
-        sequence : int
-            Sequence mode in scale 0 - 4
+        interval : int
+            Interval mode in scale 0 or 1. 0 for long intervals and 1 for short intervals.
         '''
         self.__readSettings()
-        if (0 <= sequence <= 4):
+        if ((0 == interval) or (1 == interval)):
             self.isWhite = 0
-            self.__writeSettings(BeewiSmartBulb.SET_COLOR_SEQUENCE[sequence])
+            if (1 == interval):
+                self.__writeSettings(BeewiSmartBulb.SET_SHORT_WAVE)
+            elif (0 == interval):
+                self.__writeSettings(BeewiSmartBulb.SET_LONG_WAVE)
         else:
-            print ("Sequence must be a number from 0 to 4")
+            print ("Sequence must be a number from 0 to 1")
 
     def getSettings(self, verbose = 0):
         self.__readSettings()
